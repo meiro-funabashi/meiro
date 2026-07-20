@@ -1,0 +1,31 @@
+/* color */
+$color-main: #4eb7b9;
+$color-white: #fcfcfc;
+$color-black-dark: #3c3c3c;
+$color-black: #4c4c4c;
+$color-yellow: #ffec72;
+$color-pink: #ffbdd5;
+$color-pink-dark: #b27388;
+$color-blue: #93c9f5;
+$color-blue-dark: #3d8dcc;
+$color-red: #ff6464;
+
+/* font-family */
+$font-base: "Zen Kaku Gothic New", sans-serif;
+
+/* font-size */
+$font-size-base: clamp(1.125rem, 1.081rem + 0.19vw, 1.25rem); //18〜20rem 375px〜1440px
+$font-size-sub: clamp(0.875rem, 0.831rem + 0.19vw, 1rem); //14〜16rem 375px〜1440px
+
+/* line-height */
+$line-height-base: 1.5;
+$line-height-sub: 1.6;
+
+/* hover　opacity */
+$hover-opacity: 0.7;
+
+/* border */
+$border: 1.25px solid $color-black;
+
+/* common-frameの画面幅 */
+$frame-max-width: 425px;

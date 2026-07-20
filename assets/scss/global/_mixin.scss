@@ -1,0 +1,89 @@
+@use "sass:map";
+@use "variables" as *;
+
+/* メディアクエリ */
+$breakpoint: (
+	// SP<
+	s: 426px,
+	// tablet<
+	m: 769px,
+	// PC<
+	l: 1025px,
+	// PC large<
+	xl: 1440px
+);
+@mixin mq($size) {
+	@media (min-width: map.get($breakpoint, $size)) {
+		@content;
+	}
+}
+
+/* background設定 */
+@mixin bg {
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
+/* sectionグリッド背景の設定 */
+@mixin bg-section {
+	background-repeat: repeat;
+	background-size: 30px;
+	background-position: center;
+}
+
+/* section内の各コンテンツの背景と線 */
+@mixin card {
+	background-color: $color-white;
+	border: $border;
+}
+
+/* sectionタイトルのアイコン */
+@mixin heading-icon($img-l, $w-l, $h-l, $left, $rotate-l: 0deg, $img-r, $w-r, $h-r, $right, $rotate-r: 0deg) {
+	.heading-block__ja {
+		&::before {
+			background-image: url($img-l);
+			width: $w-l;
+			height: $h-l;
+			left: $left;
+			rotate: $rotate-l;
+			--rotate-angle: #{$rotate-l};
+		}
+		&::after {
+			background-image: url($img-r);
+			width: $w-r;
+			height: $h-r;
+			right: $right;
+			rotate: $rotate-r;
+			--rotate-angle: #{$rotate-r};
+		}
+	}
+}
+
+/* section内の各コンテンツの表示アニメーション */
+@mixin fade-in($axis: y, $distance: 10px, $duration: 1s, $timing: ease, $scale: null) {
+	@if $axis == x {
+		translate: $distance 0;
+	} @else {
+		translate: 0 $distance;
+	}
+	@if $scale {
+		scale: $scale;
+		transition:
+			opacity $duration $timing,
+			translate $duration $timing,
+			scale $duration $timing;
+	} @else {
+		transition:
+			opacity $duration $timing,
+			translate $duration $timing;
+	}
+	opacity: 0;
+	&.is-visible {
+		opacity: 1;
+		translate: 0 0;
+		@if $scale {
+			scale: 1;
+		}
+	}
+}
